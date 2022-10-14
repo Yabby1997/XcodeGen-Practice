@@ -1,0 +1,47 @@
+name: Xgen
+
+options:
+  xcodeVersion: 11.0
+  deploymentTarget:
+    iOS: 14.0
+
+settings:
+  MARKETING_VERSION: 1.0.0
+  CURRENT_PROJECT_VERSION: 1
+
+targets:
+  Xgen:
+    type: application
+    platform: iOS
+    sources:
+      - path: Xgen
+        excludes: [Info.plist]
+    settings:
+      base:
+        DEVELOPMENT_TEAM: 5HZQ3M82FA
+        CODE_SIGN_ENTITLEMENTS: Xgen/XgenDebug.entitlements
+        INFOPLIST_FILE: Xgen/Info.plist
+        INFOPLIST_PREPROCESS: YES
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.seunghun.xgen
+    scheme:
+      targets: all
+    dependencies:
+      - target: XgenScreenSharing
+
+  XgenScreenSharing:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: XgenScreenSharing
+        excludes: [Info.plist]
+    settings:
+      base:
+        DEVELOPMENT_TEAM: 5HZQ3M82FA
+        CODE_SIGN_ENTITLEMENTS: XgenScreenSharing/XgenScreenSharingDebug.entitlements
+        INFOPLIST_FILE: XgenScreenSharing/Info.plist
+        INFOPLIST_PREPROCESS: YES
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.seunghun.xgen.screensharing
